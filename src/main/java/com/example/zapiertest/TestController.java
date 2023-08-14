@@ -1,6 +1,8 @@
 package com.example.zapiertest;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,6 +34,11 @@ public class TestController {
                "  }\n" +
                "]";
 
+    }
+
+    @PostMapping("create")
+    public void find(@RequestBody String id){
+        System.out.println("create  가호출되었습니다."+ "id="+id);
     }
     static class Data {
         String name;
