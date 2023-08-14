@@ -1,5 +1,8 @@
 package com.example.zapiertest;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,9 +40,15 @@ public class TestController {
     }
 
     @PostMapping("create")
-    public String find(@RequestBody String id){
-        System.out.println("create  가호출되었습니다."+ "id="+id);
-        return id;
+    public Issue create(@RequestBody Issue issue){
+        System.out.println("create  가호출되었습니다."+ "issue="+issue);
+        return issue;
     }
+    @ToString
+    public static class Issue {
+        String id;
+        String key;
+        String title;
 
+    }
 }
