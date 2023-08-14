@@ -1,5 +1,6 @@
 package com.example.zapiertest;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -44,7 +45,8 @@ public class TestController {
         System.out.println("create  가호출되었습니다."+ "issue="+issue);
         return issue;
     }
-    @ToString
+
+    @Data
     public static class Issue {
         String id;
         String key;
