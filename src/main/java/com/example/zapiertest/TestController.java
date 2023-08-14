@@ -28,7 +28,7 @@ public class TestController {
         System.out.println(">>" + LocalDateTime.now()+" issues 가 호출되었습니다.");
         return "[\n" +
                "  {\n" +
-               "    \"id\": "+getTime()+",\n" +
+               "    \"id\": \""+getTime()+"\",\n" +
                "    \"key\": \"HRP-"+getTime()+"\",\n" +
                "    \"title\": HRP에서 만들어진 이슈\n" +
                "  }\n" +
