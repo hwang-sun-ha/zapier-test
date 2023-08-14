@@ -37,8 +37,9 @@ public class TestController {
     }
 
     @PostMapping("create")
-    public void find(@RequestBody String id){
+    public String find(@RequestBody String id){
         System.out.println("create  가호출되었습니다."+ "id="+id);
+        return id;
     }
     static class Data {
         String name;
