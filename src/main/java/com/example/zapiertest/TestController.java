@@ -5,32 +5,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @RestController
 public class TestController {
-    @GetMapping("welcome")
-    public String welcome(){
-        System.out.println("welcome 이 호출되었습니다.");
-        return "welcome";
+
+    private String getTime(){
+        return LocalDateTime.now().atZone(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
-    @GetMapping("list")
+    @GetMapping("authentication")
+    public String authentication(){
+        System.out.println(getTime()+" authentication 이 호출되었습니다.");
+        return "authentication";
+    }
+    @GetMapping("issues")
     public String List(){
-        System.out.println("list  가호출되었습니다.");
+        System.out.println(">>" + LocalDateTime.now()+" issues 가 호출되었습니다.");
         return "[\n" +
                "  {\n" +
-               "    \"id\": 7,\n" +
-               "    \"created\": \"Mon, 25 Jun 2012 16:41:54 -0400\",\n" +
-               "    \"list_id\": 1,\n" +
-               "    \"description\": \"integrate our api with zapier\",\n" +
-               "    \"complete\": false\n" +
-               "  },\n" +
-               "  {\n" +
-               "    \"id\": 6,\n" +
-               "    \"created\": \"Mon, 25 Jun 2012 16:41:45 -0400\",\n" +
-               "    \"list_id\": 1,\n" +
-               "    \"description\": \"get published in zapier library\",\n" +
-               "    \"complete\": false\n" +
+               "    \"id\": "+getTime()+",\n" +
+               "    \"key\": \"HRP-"+getTime()+"\",\n" +
+               "    \"title\": HRP에서 만들어진 이슈 ,\n" +
                "  }\n" +
                "]";
 
@@ -41,8 +41,5 @@ public class TestController {
         System.out.println("create  가호출되었습니다."+ "id="+id);
         return id;
     }
-    static class Data {
-        String name;
-        String key;
-    }
+
 }
